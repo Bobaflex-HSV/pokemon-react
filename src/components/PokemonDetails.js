@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react';
 import {useParams} from 'react-router'
 
 export default() =>{
-  let {id, info} = useParams();
+  let {id,info} = useParams();
   console.log(useParams());
   return(
     <div>
