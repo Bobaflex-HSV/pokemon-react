@@ -1,9 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import {Router} from 'react-router-dom';
 import './App.css';
 
 function App() {
+  const apiURL = "http://localhost:3000/pokemon";
+  const [pokeData, setPokeData] = useState({});
+  
+  function fetchPokeData() {
+    fetch(apiURL)
+      .then(res => res.json())
+      .then(data => {
+        setPokeData(data);
+      })
+      .catch(console.log("Error"));
+  }
+  useEffect(() => {
+    fetchPokeData();
+  }, []);
+  console.log(pokeData)
+  
   return (
     <div className="App">
       <header className="App-header">
