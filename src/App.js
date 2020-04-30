@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
-import {Route, Switch} from 'react-router-dom';
+import {Route, Switch, Link, useParams} from 'react-router-dom';
 import Home from './components/Home';
 import Pokemon from './components/Pokemon';
 import PokemonList from './components/PokemonList';
 import PokemonDetails from './components/PokemonDetails';
-import './App.css';
 
 function App() {
+  /*
   const apiURL = "http://localhost:3000/pokemon";
   const [pokeData, setPokeData] = useState({});
   
@@ -23,23 +22,36 @@ function App() {
     fetchPokeData();
   }, []);
   console.log(pokeData)
-  
+  */
   return (
     <div className="App">
       <header className="App-header">
         <h1>Welcome to the World of Pokemon</h1>
       </header>
+      <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/pokemon">Pokemon List</Link>
+            </li>
+            <li>
+              <Link to="/pokemon/12">Pokemon 12</Link>
+            </li>
+          </ul>
+        </nav>
       <Switch>
         <Route exact path="/">
           <Home />
         </Route>
-        <Route path="/pokemon">
+        <Route exact path="/pokemon">
           <PokemonList/>
         </Route>
-        <Route path="/pokemond/:id">
-          <Pokemon />
+        <Route exact path="/pokemon/:id">
+          <Pokemon/>
         </Route>
-        <Route path="/pokemond/:id/:info">
+        <Route path="/pokemon/:id/:info">
           <PokemonDetails />
         </Route>   
       </Switch>
